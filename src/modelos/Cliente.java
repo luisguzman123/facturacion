@@ -45,6 +45,12 @@ public class Cliente {
         this.correo = correo;
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id_cliente=" + id_cliente + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", ruc=" + ruc + ", telefono=" + telefono + ", direccion=" + direccion + ", correo=" + correo + ", activo=" + activo + '}';
+    }
+    
     
     
 }
