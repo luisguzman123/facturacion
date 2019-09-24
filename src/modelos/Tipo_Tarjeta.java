@@ -10,15 +10,26 @@ package modelos;
  * @author gozmi
  */
 public class Tipo_Tarjeta {
+    
+    private int id_tipo_tarjeta;
     private String descripcion;
     private int activo ;
 
     public Tipo_Tarjeta() {
     }
 
-    public Tipo_Tarjeta(String descripcion, int activo) {
+    public Tipo_Tarjeta(int id_tipo_tarjeta, String descripcion, int activo) {
+        this.id_tipo_tarjeta = id_tipo_tarjeta;
         this.descripcion = descripcion;
         this.activo = activo;
+    }
+
+    public int getId_tipo_tarjeta() {
+        return id_tipo_tarjeta;
+    }
+
+    public void setId_tipo_tarjeta(int id_tipo_tarjeta) {
+        this.id_tipo_tarjeta = id_tipo_tarjeta;
     }
 
     public String getDescripcion() {
@@ -36,6 +47,8 @@ public class Tipo_Tarjeta {
     public void setActivo(int activo) {
         this.activo = activo;
     }
+
+    
 
     
 }

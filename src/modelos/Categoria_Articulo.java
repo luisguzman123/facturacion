@@ -9,27 +9,27 @@ package modelos;
  *
  * @author gozmi
  */
-public class Banco {
+public class Categoria_Articulo {
     
-    private int id_banco;
+    private int id_categoria_articulo;
     private String descripcion;
     private int activo ;
 
-    public Banco() {
+    public Categoria_Articulo() {
     }
 
-    public Banco(int id_banco, String descripcion, int activo) {
-        this.id_banco = id_banco;
+    public Categoria_Articulo(int id_categoria_articulo, String descripcion, int activo) {
+        this.id_categoria_articulo = id_categoria_articulo;
         this.descripcion = descripcion;
         this.activo = activo;
     }
 
-    public int getId_banco() {
-        return id_banco;
+    public int getId_categoria_articulo() {
+        return id_categoria_articulo;
     }
 
-    public void setId_banco(int id_banco) {
-        this.id_banco = id_banco;
+    public void setId_categoria_articulo(int id_categoria_articulo) {
+        this.id_categoria_articulo = id_categoria_articulo;
     }
 
     public String getDescripcion() {
@@ -47,9 +47,6 @@ public class Banco {
     public void setActivo(int activo) {
         this.activo = activo;
     }
-
-    
-    
     
     
 }
