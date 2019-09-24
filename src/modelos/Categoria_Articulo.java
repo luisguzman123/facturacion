@@ -24,6 +24,12 @@ public class Categoria_Articulo {
         this.activo = activo;
     }
 
+    public Categoria_Articulo(int id_categoria_articulo, String descripcion) {
+        this.id_categoria_articulo = id_categoria_articulo;
+        this.descripcion = descripcion;
+    }
+
+    
     public int getId_categoria_articulo() {
         return id_categoria_articulo;
     }

@@ -15,18 +15,39 @@ public class Usuario {
     private String nombre_apellido;
     private String usuario;
     private String pass;
+    private int id_sucursal;
     private int activo ;
 
     public Usuario() {
     }
 
-    public Usuario(int id_usuario, String nombre_apellido, String usuario, String pass, int activo) {
+    public Usuario(int id_usuario, String nombre_apellido, String usuario, String pass, int id_sucursal, int activo) {
         this.id_usuario = id_usuario;
         this.nombre_apellido = nombre_apellido;
         this.usuario = usuario;
         this.pass = pass;
+        this.id_sucursal = id_sucursal;
         this.activo = activo;
     }
+
+    public Usuario(int id_usuario, String nombre_apellido, String usuario, String pass, int id_sucursal) {
+        this.id_usuario = id_usuario;
+        this.nombre_apellido = nombre_apellido;
+        this.usuario = usuario;
+        this.pass = pass;
+        this.id_sucursal = id_sucursal;
+    }
+
+    
+    public int getId_sucursal() {
+        return id_sucursal;
+    }
+
+    public void setId_sucursal(int id_sucursal) {
+        this.id_sucursal = id_sucursal;
+    }
+
+   
 
     public int getId_usuario() {
         return id_usuario;

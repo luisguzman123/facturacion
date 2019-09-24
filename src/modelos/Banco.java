@@ -24,6 +24,11 @@ public class Banco {
         this.activo = activo;
     }
 
+    public Banco(int id_banco, String descripcion) {
+        this.id_banco = id_banco;
+        this.descripcion = descripcion;
+    }
+   
     public int getId_banco() {
         return id_banco;
     }

@@ -25,6 +25,12 @@ public class Tipo_Cliente {
         this.activo = activo;
     }
 
+    public Tipo_Cliente(int id_tipo_cliente, String descripcion) {
+        this.id_tipo_cliente = id_tipo_cliente;
+        this.descripcion = descripcion;
+    }
+    
+    
     public int getId_tipo_cliente() {
         return id_tipo_cliente;
     }

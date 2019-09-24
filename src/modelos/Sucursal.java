@@ -26,6 +26,14 @@ public class Sucursal {
         this.activo = activo;
     }
 
+    public Sucursal(int id_sucursal, String nombre, String direccion) {
+        this.id_sucursal = id_sucursal;
+        this.nombre = nombre;
+        this.direccion = direccion;
+    }
+    
+    
+
     public int getId_sucursal() {
         return id_sucursal;
     }
