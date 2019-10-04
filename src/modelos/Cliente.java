@@ -23,6 +23,16 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(String nombre, String apellido, String cedula, String ruc, String telefono, String direccion, String correo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.ruc = ruc;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+    }
+
     public Cliente(int id_cliente, String nombre, String apellido, String cedula, String ruc, String telefono, String direccion, String correo, int activo) {
         this.id_cliente = id_cliente;
         this.nombre = nombre;

@@ -31,7 +31,7 @@ public class Postgre {
     public Connection conexion(){
         String base_datos = "jdbc:postgresql://localhost:5432/sistema";
         String usuario = "postgres";
-        String pass = "mica11";
+        String pass = "123";
         Connection con =  null;
         try {
             

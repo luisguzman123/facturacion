@@ -24,7 +24,17 @@ public class Cliente {
         try {
             PreparedStatement pst = con.prepareStatement("INSERT INTO clientes(\n" +
             "nombre, apellido, cedula, ruc, telefono, direccion, correo, activo)\n" +
-            "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);");
+            "VALUES ( ?, ?, ?, ?, ?, ?, ?, 1);");
+            
+            pst.setString(1, objeto.getNombre());
+            pst.setString(2, objeto.getApellido());
+            pst.setString(3, objeto.getCedula());
+            pst.setString(4, objeto.getRuc());
+            pst.setString(5, objeto.getTelefono());
+            pst.setString(6, objeto.getDireccion());
+            pst.setString(7, objeto.getCorreo());
+            
+            pst.executeUpdate();
        
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al guardar datos en"

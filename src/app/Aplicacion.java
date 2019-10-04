@@ -17,6 +17,9 @@ public class Aplicacion {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("hola");
+         new conexion.Postgre().crearConexion();
+         new ventanas.Principal().setVisible(true);
+        
     }
     
 }
