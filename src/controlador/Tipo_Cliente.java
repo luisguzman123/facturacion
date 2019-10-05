@@ -82,7 +82,7 @@ public class Tipo_Cliente {
         ArrayList<modelos.Tipo_Cliente> datos = new ArrayList<>();
         try {
 
-            String sql = "SELECT descripcion \n"
+            String sql = "SELECT id_tipo_cliente, descripcion \n"
                     + "	FROM tipos_clientes  WHERE activo = 1 "
                     + "ORDER BY id_tipo_cliente;";
 

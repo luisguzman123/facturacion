@@ -6,7 +6,6 @@
 package vistas;
 
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,9 +14,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author gozmi
  */
-public class Banco {
+public class Tipo_Cliente {
     
-    public void guardar(ventanas.Banco ventana){
+     
+    public void guardar(ventanas.Tipo_Cliente ventana){
         if(ventana.getNombre_txt().getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(ventana, 
                     "Debes ingresar una descripcion");
@@ -26,7 +26,7 @@ public class Banco {
                     
         }
                
-        new controlador.Banco().guardar(new modelos.Banco(
+        new controlador.Tipo_Cliente().guardar(new modelos.Tipo_Cliente(
                 ventana.getNombre_txt().getText()));
         
         JOptionPane.showMessageDialog(ventana, "Guardado Correctamente");
@@ -36,7 +36,7 @@ public class Banco {
         
     }
     
-    public void actualizar(ventanas.EditarBanco ventana){
+    public void actualizar(ventanas.EditarTipo_Cliente ventana){
         if(ventana.getNombre_txt().getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(ventana, 
                     "Debes ingresar una descripcion");
@@ -45,10 +45,10 @@ public class Banco {
                     
         }
         
-        new controlador.Banco().actualizar(new modelos.Banco( 
-                ventana.getCodigo_banco(),
+        new controlador.Tipo_Cliente().actualizar(new modelos.Tipo_Cliente(
+                ventana.getCodigo_tipo_cl(), 
                 ventana.getNombre_txt().getText()));
-        
+               
         JOptionPane.showMessageDialog(ventana, "Actualizado Correctamente");
         
         ventana.getNombre_txt().setText("");
@@ -58,15 +58,15 @@ public class Banco {
     }
     
     public void buscarPorNombre(String nombre, JTable tabla){
-        ArrayList<modelos.Banco> bancos = new controlador.Banco().dameBancosPorNombre(nombre);
+        ArrayList<modelos.Tipo_Cliente> tipos = new controlador.Tipo_Cliente().dameTipoClientesPorNombre(nombre);
              
         new util.Tablas().limpiarTabla(tabla);
         
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         Object[] fila = new Object[2];
-        for (modelos.Banco banco : bancos) {
-            fila[0] = banco.getId_banco();
-            fila[1] = banco.getDescripcion();
+        for (modelos.Tipo_Cliente tipo : tipos) {
+            fila[0] = tipo.getId_tipo_cliente();
+            fila[1] = tipo.getDescripcion();
             modelo.addRow(fila);
         }
         tabla.setModel(modelo);
@@ -76,12 +76,12 @@ public class Banco {
     
     public void cargarTabla(JTable tabla){
         new util.Tablas().limpiarTabla(tabla);
-        ArrayList<modelos.Banco> bancos = new controlador.Banco().dameBancos();
+        ArrayList<modelos.Tipo_Cliente> tipos = new controlador.Tipo_Cliente().dameTipoClientes();
         Object[] fila = new Object[2];
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-        for (modelos.Banco banco : bancos) {
-            fila[0] = banco.getId_banco();
-            fila[1] = banco.getDescripcion();
+        for (modelos.Tipo_Cliente tipo : tipos) {
+            fila[0] = tipo.getId_tipo_cliente();
+            fila[1] = tipo.getDescripcion();
             modelo.addRow(fila);
         }
         
@@ -108,16 +108,16 @@ public class Banco {
                 ==  JOptionPane.NO_OPTION){
             return;
         }
-        new controlador.Banco().cambiarEstado(
+        new controlador.Tipo_Cliente().cambiarEstado(
                 Integer.parseInt(
                         tabla.getValueAt(tabla.getSelectedRow(),
                                 0).toString()), 0);
         
-        new vistas.Banco().cargarTabla(tabla);
+        new vistas.Tipo_Cliente().cargarTabla(tabla);
         JOptionPane.showMessageDialog(null, "Eliminado Correctamente");
     }
     
-    public void editarBanco(ventanas.Banco ventana){
+    public void editarTipo_Cliente(ventanas.Tipo_Cliente ventana){
         if(ventana.getDatos_tb().getSelectedRow() == -1){
             JOptionPane.showMessageDialog(ventana, "Selecciona un registro");
             return;
@@ -128,7 +128,7 @@ public class Banco {
                 Integer.parseInt(ventana.getDatos_tb().getValueAt(fila, 0).toString()), 
                 ventana.getDatos_tb().getValueAt(fila, 1).toString()); 
         
-        new ventanas.EditarBanco(null, true, banco).setVisible(true);
+        new ventanas.EditarTipo_Cliente(null, true, banco).setVisible(true);
     cargarTabla(ventana.getDatos_tb());
     }
     

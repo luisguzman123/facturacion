@@ -6,28 +6,28 @@
 package ventanas;
 
 import javax.swing.JTextField;
-import modelos.Banco;
 
 /**
  *
  * @author gozmi
  */
-public class EditarBanco extends java.awt.Dialog {
+public class EditarCategoria_Articulo extends java.awt.Dialog {
 
-    modelos.Banco banco = new Banco();
-    int codigo_banco = 0;
     /**
-     * Creates new form EditarBanco
+     * Creates new form EditarCategoria_Articulo
      */
-    public EditarBanco(java.awt.Frame parent, boolean modal) {
+    modelos.Categoria_Articulo categoria = new modelos.Categoria_Articulo();
+    int codigo_categoria = 0;
+    
+    public EditarCategoria_Articulo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-    public EditarBanco(java.awt.Frame parent, boolean modal, modelos.Banco banco) {
+    public EditarCategoria_Articulo(java.awt.Frame parent, boolean modal, modelos.Categoria_Articulo categoria) {
         super(parent, modal);
         initComponents();
-        nombre_txt.setText(banco.getDescripcion());
-        codigo_banco =  banco.getId_banco();
+        nombre_cat_txt.setText(categoria.getDescripcion());
+        codigo_categoria =  categoria.getId_categoria_articulo();
     }
 
     /**
@@ -38,10 +38,10 @@ public class EditarBanco extends java.awt.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        nombre_txt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        nombre_cat_txt = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -49,25 +49,19 @@ public class EditarBanco extends java.awt.Dialog {
             }
         });
 
-        jButton2.setText("Cancelar");
+        jLabel1.setText("Descripción:");
+
+        jButton2.setText("Actualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Descripción:");
-
-        nombre_txt.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText("Cancelar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre_txtActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Actualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -77,28 +71,28 @@ public class EditarBanco extends java.awt.Dialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nombre_cat_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombre_cat_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -113,27 +107,22 @@ public class EditarBanco extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_closeDialog
 
-    private void nombre_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_txtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombre_txtActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        new vistas.Banco().actualizar(this);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        new vistas.Categoria_Articulo().actualizar(this);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public JTextField getNombre_txt() {
-        return nombre_txt;
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public int getCodigo_categoria() {
+        return codigo_categoria;
     }
 
-    public int getCodigo_banco() {
-        return codigo_banco;
+    public JTextField getNombre_cat_txt() {
+        return nombre_cat_txt;
     }
 
     
@@ -144,7 +133,7 @@ public class EditarBanco extends java.awt.Dialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EditarBanco dialog = new EditarBanco(new java.awt.Frame(), true);
+                EditarCategoria_Articulo dialog = new EditarCategoria_Articulo(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -157,9 +146,9 @@ public class EditarBanco extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField nombre_txt;
+    private javax.swing.JTextField nombre_cat_txt;
     // End of variables declaration//GEN-END:variables
 }

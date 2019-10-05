@@ -88,7 +88,7 @@ public class Usuario {
         ArrayList<modelos.Usuario> datos = new ArrayList<>();
         try {
 
-            String sql = "SELECT nombre_apellido, usuario, pass, id_sucursal\n"
+            String sql = "SELECT id_usuarios, nombre_apellido, usuario, pass, id_sucursal\n"
                     + "	FROM usuarios  WHERE activo = 1 "
                     + "ORDER BY id_usuario;";
 
@@ -109,32 +109,32 @@ public class Usuario {
 
         return datos;
     }
-    
-     public modelos.Usuario dameUsuarioPorSucursal(int id) {
-
+ 
+    public ArrayList<modelos.Usuario> dameUsuariosPorNombre(String nombre) {
+        ArrayList<modelos.Usuario> datos1 = new ArrayList<>();
         try {
 
-            String sql = "SELECT id_usuarios, nombre_apellido, usuario, pass, id_sucursal, activo\n"
+            String sql = "SELECT id_usuarios, nombre_apellido, usuario, pass, id_sucursal\n"
                     + "	FROM usuarios \n"
-                    + "	WHERE id_sucursal = " + id;
+                    + "	WHERE UPPER(usario) LIKE '%" + nombre.toUpperCase() + "%' and activo = 1;";
 
             Statement pst = con.createStatement();
             ResultSet rs = pst.executeQuery(sql);
 
             while (rs.next()) {
-                return new modelos.Usuario(
-                        rs.getInt("id_usuarios"),
+                datos1.add(new modelos.Usuario(
+                        rs.getInt("id_usuarios"), 
                         rs.getString("nombre_apellido").trim(),
                         rs.getString("usuario").trim(),
                         rs.getString("pass").trim(),
                         rs.getInt("id_sucursal"), 
-                        rs.getInt("activo"));
-            }
-                        
+                        rs.getInt("activo")));                                                
+                        }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al leer datos de la tabla Usuarios por Sucursal: " + ex);
+            JOptionPane.showMessageDialog(null, "Error al leer datos de la tabla Usuarios: " + ex);
         }
 
-        return new modelos.Usuario();
+       return datos1;
+       
     }
 }

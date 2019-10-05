@@ -45,7 +45,7 @@ public class Banco {
         try {
             PreparedStatement pst = con.prepareStatement("UPDATE bancos\n"
                     + "	SET descripcion=?\n"
-                    + "	WHERE id_banco=?;");
+                    + "	WHERE id_banco=?");
             pst.setString(1, objeto.getDescripcion());
             pst.setInt(2, objeto.getId_banco());
 
@@ -82,16 +82,16 @@ public class Banco {
         ArrayList<modelos.Banco> datos = new ArrayList<>();
         try {
 
-            String sql = "SELECT descripcion \n"
+            String sql = "SELECT id_banco, descripcion \n"
                     + "	FROM bancos  WHERE activo = 1 "
-                    + "ORDER BY id_banco;";
+                    + "ORDER BY id_banco";
 
             Statement pst = con.createStatement();
             ResultSet rs = pst.executeQuery(sql);
 
             while (rs.next()) {
                 datos.add(new modelos.Banco( 
-                        rs.getInt("id_banco"),
+                        rs.getInt("id_banco"), 
                         rs.getString("descripcion").trim()));
             }
         } catch (SQLException ex) {
@@ -120,7 +120,7 @@ public class Banco {
                                                 
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al leer datos de la tabla Bancos: " + ex);
+            JOptionPane.showMessageDialog(null, "Error al leer datos de la tabla BANCOS: " + ex);
         }
 
        return datos;

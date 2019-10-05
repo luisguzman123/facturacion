@@ -81,18 +81,18 @@ public class Sucursal {
     }
 
     public ArrayList<modelos.Sucursal> dameSucursales() {
-        ArrayList<modelos.Sucursal> datos = new ArrayList<>();
+        ArrayList<modelos.Sucursal> datos1 = new ArrayList<>();
         try {
 
-            String sql = "SELECT nombre, direccion \n"
+            String sql = "SELECT id_sucursal, nombre, direccion \n"
                     + "	FROM sucursales  WHERE activo = 1 "
-                    + "ORDER BY id_sucursal;";
+                    + "ORDER BY id_sucursal";
 
             Statement pst = con.createStatement();
             ResultSet rs = pst.executeQuery(sql);
 
             while (rs.next()) {
-                datos.add(new modelos.Sucursal( 
+                datos1.add(new modelos.Sucursal(
                         rs.getInt("id_sucursal"), 
                         rs.getString("nombre").trim(), 
                         rs.getString("direccion").trim()));                         
@@ -101,11 +101,11 @@ public class Sucursal {
             JOptionPane.showMessageDialog(null, "Error al leer datos de la tabla Sucursales: " + ex);
         }
 
-        return datos;
+        return datos1;
     }
     
     public ArrayList<modelos.Sucursal> dameSucursalesPorNombre(String nombre) {
-        ArrayList<modelos.Sucursal> datos = new ArrayList<>();
+        ArrayList<modelos.Sucursal> datos1 = new ArrayList<>();
         try {
 
             String sql = "SELECT id_sucursal, nombre, direccion, activo\n"
@@ -116,7 +116,7 @@ public class Sucursal {
             ResultSet rs = pst.executeQuery(sql);
 
             while (rs.next()) {
-                datos.add(new modelos.Sucursal(
+                datos1.add(new modelos.Sucursal(
                         rs.getInt("id_sucursal"), 
                         rs.getString("nombre").trim(),
                         rs.getString("direccion").trim(),
@@ -126,6 +126,32 @@ public class Sucursal {
             JOptionPane.showMessageDialog(null, "Error al leer datos de la tabla Sucursales: " + ex);
         }
 
-       return datos;
+       return datos1;
+       
+    }
+    
+    public modelos.Sucursal dameSucursalesPorNombre1(String nombre) {
+        try {
+
+            String sql = "SELECT id_sucursal, nombre, direccion, activo\n"
+                    + "	FROM sucursales \n"
+                    + "	WHERE UPPER(nombre) LIKE '%" + nombre.toUpperCase() + "%' and activo = 1;";
+
+            Statement pst = con.createStatement();
+            ResultSet rs = pst.executeQuery(sql);
+
+            while (rs.next()) {
+                return (new modelos.Sucursal(
+                        rs.getInt("id_sucursal"), 
+                        rs.getString("nombre").trim(),
+                        rs.getString("direccion").trim(),
+                        rs.getInt("activo")));                                                
+                        }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al leer datos de la tabla Sucursales: " + ex);
+        }
+
+      
+       return new modelos.Sucursal();
     }
 }

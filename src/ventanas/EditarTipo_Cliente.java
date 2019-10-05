@@ -6,28 +6,28 @@
 package ventanas;
 
 import javax.swing.JTextField;
-import modelos.Banco;
 
 /**
  *
  * @author gozmi
  */
-public class EditarBanco extends java.awt.Dialog {
+public class EditarTipo_Cliente extends java.awt.Dialog {
 
-    modelos.Banco banco = new Banco();
-    int codigo_banco = 0;
     /**
-     * Creates new form EditarBanco
+     * Creates new form EditarTipo_Cliente
      */
-    public EditarBanco(java.awt.Frame parent, boolean modal) {
+    modelos.Tipo_Cliente tipo_cl = new modelos.Tipo_Cliente();
+    int codigo_tipo_cl = 0;
+    
+    public EditarTipo_Cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-    public EditarBanco(java.awt.Frame parent, boolean modal, modelos.Banco banco) {
+    public EditarTipo_Cliente(java.awt.Frame parent, boolean modal, modelos.Banco banco) {
         super(parent, modal);
         initComponents();
         nombre_txt.setText(banco.getDescripcion());
-        codigo_banco =  banco.getId_banco();
+        codigo_tipo_cl =  banco.getId_banco();
     }
 
     /**
@@ -86,7 +86,7 @@ public class EditarBanco extends java.awt.Dialog {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +99,7 @@ public class EditarBanco extends java.awt.Dialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,30 +113,28 @@ public class EditarBanco extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_closeDialog
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void nombre_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_txtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombre_txtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new vistas.Banco().actualizar(this);
-
+        new vistas.Tipo_Cliente().actualizar(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    public int getCodigo_tipo_cl() {
+        return codigo_tipo_cl;
+    }
 
     public JTextField getNombre_txt() {
         return nombre_txt;
     }
 
-    public int getCodigo_banco() {
-        return codigo_banco;
-    }
-
-    
     
     /**
      * @param args the command line arguments
@@ -144,7 +142,7 @@ public class EditarBanco extends java.awt.Dialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EditarBanco dialog = new EditarBanco(new java.awt.Frame(), true);
+                EditarTipo_Cliente dialog = new EditarTipo_Cliente(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);

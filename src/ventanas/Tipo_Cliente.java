@@ -8,31 +8,29 @@ package ventanas;
 import java.awt.event.KeyEvent;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-//import modelos.Banco;
 
 /**
  *
  * @author gozmi
  */
-public class Banco extends java.awt.Dialog {
+public class Tipo_Cliente extends java.awt.Dialog {
 
     /**
-     * Creates new form Banco
+     * Creates new form Tipo_Cliente
      */
     boolean busqueda = false;
-    modelos.Banco banco = new modelos.Banco();
+    modelos.Tipo_Cliente tipo_cl = new modelos.Tipo_Cliente();
     
     
-    public Banco(java.awt.Frame parent, boolean modal) {
+    public Tipo_Cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-
-    public Banco(java.awt.Frame parent, boolean modal,
+     public Tipo_Cliente(java.awt.Frame parent, boolean modal,
             boolean busqueda) {
         super(parent, modal);
         initComponents();
-        new vistas.Banco().cargarTabla(datos_tb);
+        new vistas.Tipo_Cliente().cargarTabla(datos_tb);
         this.busqueda = busqueda;
         iniciarComponentesBusqueda();  
     }
@@ -40,6 +38,7 @@ public class Banco extends java.awt.Dialog {
         panel.setSelectedIndex(1);
         nombre_buscar_txt.requestFocus();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -134,11 +133,6 @@ public class Banco extends java.awt.Dialog {
             }
         });
         jScrollPane1.setViewportView(datos_tb);
-        if (datos_tb.getColumnModel().getColumnCount() > 0) {
-            datos_tb.getColumnModel().getColumn(0).setResizable(false);
-            datos_tb.getColumnModel().getColumn(0).setPreferredWidth(10);
-            datos_tb.getColumnModel().getColumn(1).setResizable(false);
-        }
 
         nombre_buscar_txt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -221,49 +215,45 @@ public class Banco extends java.awt.Dialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new vistas.Banco().guardar(this);
+        new vistas.Tipo_Cliente().guardar(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void datos_tbKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_datos_tbKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             int fila = datos_tb.getSelectedRow();
-             banco.setId_banco(fila);
-                Integer.parseInt(
-                    datos_tb.getValueAt(fila, 0).toString());
-            banco.setDescripcion(datos_tb.getValueAt(fila, 1).toString());
+            tipo_cl.setId_tipo_cliente(fila);
+            Integer.parseInt(
+                datos_tb.getValueAt(fila, 0).toString());
+            tipo_cl.setDescripcion(datos_tb.getValueAt(fila, 1).toString());
             dispose();
         }
     }//GEN-LAST:event_datos_tbKeyPressed
 
     private void nombre_buscar_txtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre_buscar_txtKeyReleased
         // TODO add your handling code here:
-        new vistas.Banco().buscarPorNombre(nombre_buscar_txt.getText(), datos_tb);
+        new vistas.Tipo_Cliente().buscarPorNombre(nombre_buscar_txt.getText(), datos_tb);
     }//GEN-LAST:event_nombre_buscar_txtKeyReleased
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        new vistas.Banco().borrarFila(datos_tb);
-
+        new vistas.Tipo_Cliente().borrarFila(datos_tb);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        new vistas.Banco().editarBanco(this);
+        new vistas.Tipo_Cliente().editarTipo_Cliente(this);
         new util.Tablas().limpiarTabla(datos_tb);
-
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    public JTextField getNombre_txt() {
-        return nombre_txt;
-    }
 
     public JTable getDatos_tb() {
         return datos_tb;
     }
 
-    
-    
+    public JTextField getNombre_txt() {
+        return nombre_txt;
+    }
+
     
     /**
      * @param args the command line arguments
@@ -271,7 +261,7 @@ public class Banco extends java.awt.Dialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Banco dialog = new Banco(new java.awt.Frame(), true);
+                Tipo_Cliente dialog = new Tipo_Cliente(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);

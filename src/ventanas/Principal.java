@@ -32,6 +32,10 @@ public class Principal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         itemBanco = new javax.swing.JMenuItem();
+        itemCatArticulo = new javax.swing.JMenuItem();
+        itemSucursal = new javax.swing.JMenuItem();
+        itemTipoCliente = new javax.swing.JMenuItem();
+        itemUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +59,38 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(itemBanco);
+
+        itemCatArticulo.setText("Categoría de Artículos");
+        itemCatArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCatArticuloActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemCatArticulo);
+
+        itemSucursal.setText("Sucursal");
+        itemSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSucursalActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemSucursal);
+
+        itemTipoCliente.setText("Tipo de Cliente");
+        itemTipoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemTipoClienteActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemTipoCliente);
+
+        itemUsuario.setText("Usuarios");
+        itemUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemUsuario);
 
         jMenuBar1.add(jMenu2);
 
@@ -83,6 +119,26 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ventanas.Banco(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_itemBancoActionPerformed
+
+    private void itemCatArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCatArticuloActionPerformed
+        // TODO add your handling code here:
+        new ventanas.Categoria_Articulo(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_itemCatArticuloActionPerformed
+
+    private void itemSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSucursalActionPerformed
+        // TODO add your handling code here:
+        new ventanas.Sucursal(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_itemSucursalActionPerformed
+
+    private void itemTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTipoClienteActionPerformed
+        // TODO add your handling code here:
+        new ventanas.Tipo_Cliente(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_itemTipoClienteActionPerformed
+
+    private void itemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUsuarioActionPerformed
+        // TODO add your handling code here:
+        new ventanas.Usuario(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_itemUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,6 +177,10 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itemBanco;
+    private javax.swing.JMenuItem itemCatArticulo;
+    private javax.swing.JMenuItem itemSucursal;
+    private javax.swing.JMenuItem itemTipoCliente;
+    private javax.swing.JMenuItem itemUsuario;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

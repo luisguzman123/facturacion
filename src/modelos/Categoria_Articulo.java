@@ -29,6 +29,11 @@ public class Categoria_Articulo {
         this.descripcion = descripcion;
     }
 
+    public Categoria_Articulo(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    
     
     public int getId_categoria_articulo() {
         return id_categoria_articulo;

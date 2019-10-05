@@ -82,7 +82,7 @@ public class Categoria_Articulo {
         ArrayList<modelos.Categoria_Articulo> datos = new ArrayList<>();
         try {
 
-            String sql = "SELECT descripcion \n"
+            String sql = "SELECT id_categoria, descripcion \n"
                     + "	FROM categorias  WHERE activo = 1 "
                     + "ORDER BY id_categoria;";
 

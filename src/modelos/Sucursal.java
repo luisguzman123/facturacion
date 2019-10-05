@@ -31,6 +31,11 @@ public class Sucursal {
         this.nombre = nombre;
         this.direccion = direccion;
     }
+
+    public Sucursal(String nombre, String direccion) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+    }
     
     
 

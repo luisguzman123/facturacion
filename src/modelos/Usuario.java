@@ -38,6 +38,14 @@ public class Usuario {
         this.id_sucursal = id_sucursal;
     }
 
+    public Usuario(String nombre_apellido, String usuario, String pass, int id_sucursal) {
+        this.nombre_apellido = nombre_apellido;
+        this.usuario = usuario;
+        this.pass = pass;
+        this.id_sucursal = id_sucursal;
+    }
+
+    
     
     public int getId_sucursal() {
         return id_sucursal;
