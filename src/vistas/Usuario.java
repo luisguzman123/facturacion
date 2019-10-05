@@ -37,19 +37,25 @@ public class Usuario {
             return;
                     
         }
-        
-        new controlador.Usuario().actualizar(new modelos.Usuario(
+        if(ventana.getSucursal_txt().getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(ventana, 
+                    "Debes seleccionar una sucursal");
+            ventana.getPass_txt().requestFocus();
+            return;
+                    
+        }
+        new controlador.Usuario().guardar(new modelos.Usuario(
                 ventana.getNombre_txt().getText(),
                 ventana.getUsuario_txt().getText(),
                 ventana.getPass_txt().getText(),
-                Integer.parseInt(ventana.getCodigo_sucursal_lbl().getText()))); 
+                Integer.parseInt(ventana.getCodigo_sucursal().getText()))); 
                         
         JOptionPane.showMessageDialog(ventana, "Guardado Correctamente");
         
         ventana.getNombre_txt().setText("");
         ventana.getUsuario_txt().setText("");
         ventana.getPass_txt().setText("");
-        ventana.getSucursal_lst().setSelectedIndex(1);
+        ventana.getSucursal_txt().setText("");
         ventana.getNombre_txt().requestFocus();
         
     }
@@ -76,13 +82,19 @@ public class Usuario {
             return;
                     
         }
-        
+        if(ventana.getSucursal_txt().getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(ventana, 
+                    "Debes seleccionar una sucursal");
+            ventana.getPass_txt().requestFocus();
+            return;
+                    
+        }
         new controlador.Usuario().actualizar(new modelos.Usuario(
                 ventana.getCodigo_usuario(),  
                 ventana.getNombre_txt().getText(),
                 ventana.getUsuario_txt().getText(),
                 ventana.getPass_txt().getText(),
-                Integer.parseInt(ventana.getCodigo_sucursal_lbl().getText()))); 
+                Integer.parseInt(ventana.getCodigo_sucursal().getText())));  
     
         
         JOptionPane.showMessageDialog(ventana, "Actualizado Correctamente");
@@ -90,7 +102,7 @@ public class Usuario {
         ventana.getNombre_txt().setText("");
         ventana.getUsuario_txt().setText("");
         ventana.getPass_txt().setText("");
-        ventana.getSucursal_lst().setSelectedIndex(1);
+        ventana.getSucursal_txt().setText("");
         ventana.getNombre_txt().requestFocus();
         ventana.dispose();
         
@@ -109,7 +121,7 @@ public class Usuario {
             fila[1] = usuario.getNombre_apellido();
             fila[2] = usuario.getUsuario();
             fila[3] = usuario.getPass();
-            fila[4] = usuario.getId_usuario();
+            fila[4] = usuario.getId_sucursal();
             modelo.addRow(fila);
         }
         tabla.setModel(modelo);
@@ -127,7 +139,7 @@ public class Usuario {
             fila[1] = usuario.getNombre_apellido();
             fila[2] = usuario.getUsuario();
             fila[3] = usuario.getPass();
-            fila[4] = usuario.getId_usuario();
+            fila[4] = usuario.getId_sucursal();
             modelo.addRow(fila);
         }
         
@@ -177,8 +189,11 @@ public class Usuario {
                 ventana.getDatos_tb().getValueAt(fila, 3).toString(), 
                 Integer.parseInt(ventana.getDatos_tb().getValueAt(fila, 4).toString()));
                 
+        
                         
         new ventanas.EditarUsuario(null, true, usuario).setVisible(true);
-    cargarTabla(ventana.getDatos_tb());
+       
+        cargarTabla(ventana.getDatos_tb());
+    
     }
 }

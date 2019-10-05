@@ -26,7 +26,7 @@ public class Usuario {
         try {
             PreparedStatement pst = con.prepareStatement("INSERT INTO usuarios(\n"
                     + "	nombre_apellido, usuario, pass, id_sucursal, activo)\n"
-                    + "	VALUES (?, ?, ?, ?, 1);");
+                    + "	VALUES (?, ?, ?, ?, 1)");
             pst.setString(1, objeto.getNombre_apellido());
             pst.setString(2, objeto.getUsuario());
             pst.setString(3, objeto.getPass());
@@ -88,7 +88,7 @@ public class Usuario {
         ArrayList<modelos.Usuario> datos = new ArrayList<>();
         try {
 
-            String sql = "SELECT id_usuarios, nombre_apellido, usuario, pass, id_sucursal\n"
+            String sql = "SELECT id_usuario, nombre_apellido, usuario, pass, id_sucursal\n"
                     + "	FROM usuarios  WHERE activo = 1 "
                     + "ORDER BY id_usuario;";
 
@@ -114,16 +114,16 @@ public class Usuario {
         ArrayList<modelos.Usuario> datos1 = new ArrayList<>();
         try {
 
-            String sql = "SELECT id_usuarios, nombre_apellido, usuario, pass, id_sucursal\n"
+            String sql = "SELECT id_usuario, nombre_apellido, usuario, pass, id_sucursal, activo\n"
                     + "	FROM usuarios \n"
-                    + "	WHERE UPPER(usario) LIKE '%" + nombre.toUpperCase() + "%' and activo = 1;";
+                    + "	WHERE UPPER(usuario) LIKE '%" + nombre.toUpperCase() + "%' and activo = 1;";
 
             Statement pst = con.createStatement();
             ResultSet rs = pst.executeQuery(sql);
 
             while (rs.next()) {
                 datos1.add(new modelos.Usuario(
-                        rs.getInt("id_usuarios"), 
+                        rs.getInt("id_usuario"), 
                         rs.getString("nombre_apellido").trim(),
                         rs.getString("usuario").trim(),
                         rs.getString("pass").trim(),

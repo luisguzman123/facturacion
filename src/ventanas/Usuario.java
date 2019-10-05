@@ -8,6 +8,7 @@ package ventanas;
 import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -27,13 +28,13 @@ public class Usuario extends java.awt.Dialog {
     public Usuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        new vistas.Sucursal().cargarTabla(datos_suc_tb);
     }
     public Usuario(java.awt.Frame parent, boolean modal,
             boolean busqueda) {
         super(parent, modal);
         initComponents();
         new vistas.Usuario().cargarTabla(datos_tb);
-        new vistas.Sucursal().cargarTabla(datos_tb);
         this.busqueda = busqueda;
         iniciarComponentesBusqueda();  
     }
@@ -58,11 +59,14 @@ public class Usuario extends java.awt.Dialog {
         jLabel6 = new javax.swing.JLabel();
         usuario_txt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        pass_txt = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        sucursal_lst = new javax.swing.JComboBox();
-        codigo_sucursal_lbl = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        sucursal_txt = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        datos_suc_tb = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        codigo_sucursal = new javax.swing.JTextField();
+        pass_txt = new javax.swing.JPasswordField();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -94,49 +98,74 @@ public class Usuario extends java.awt.Dialog {
 
         jLabel9.setText("Sucursal:");
 
-        sucursal_lst.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                sucursal_lstItemStateChanged(evt);
+        jLabel3.setText("Codigo");
+
+        sucursal_txt.setEditable(false);
+
+        datos_suc_tb.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NOMBRE", "DIRECCIÓN"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        datos_suc_tb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                datos_suc_tbMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(datos_suc_tb);
 
-        codigo_sucursal_lbl.setText("0");
+        jLabel1.setText("Seleccione con su mouse la Sucursal");
 
-        jLabel10.setText("Codigo");
+        codigo_sucursal.setEditable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usuario_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(199, 199, 199)
+                        .addComponent(jButton5))
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(pass_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sucursal_lst, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(codigo_sucursal_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(jButton5)))))
-                .addContainerGap())
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pass_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel6))
+                                    .addGap(40, 40, 40)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(usuario_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addGap(86, 86, 86)
+                                    .addComponent(sucursal_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel3)
+                                    .addGap(16, 16, 16)
+                                    .addComponent(codigo_sucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(26, 26, 26))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,19 +185,23 @@ public class Usuario extends java.awt.Dialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(sucursal_lst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(codigo_sucursal_lbl))
-                .addGap(29, 29, 29)
+                    .addComponent(sucursal_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(codigo_sucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addComponent(jButton5)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         panel4.addTab("Agregar", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setText("Nombre:");
+        jLabel7.setText("Usuario:");
 
         datos_tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -218,19 +251,21 @@ public class Usuario extends java.awt.Dialog {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nombre_buscar_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(99, 99, 99)
                         .addComponent(jButton6)
                         .addGap(69, 69, 69)
                         .addComponent(jButton7))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,12 +275,12 @@ public class Usuario extends java.awt.Dialog {
                     .addComponent(jLabel7)
                     .addComponent(nombre_buscar_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(84, 84, 84))
         );
 
         panel4.addTab("Buscar", jPanel6);
@@ -258,7 +293,7 @@ public class Usuario extends java.awt.Dialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel4)
         );
 
         pack();
@@ -272,10 +307,21 @@ public class Usuario extends java.awt.Dialog {
         dispose();
     }//GEN-LAST:event_closeDialog
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        new vistas.Usuario().guardar(this);
-    }//GEN-LAST:event_jButton5ActionPerformed
+        new vistas.Usuario().editarUsuario(this);
+        new util.Tablas().limpiarTabla(datos_tb);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        new vistas.Usuario().borrarFila(datos_tb);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void nombre_buscar_txtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre_buscar_txtKeyReleased
+        // TODO add your handling code here:
+        new vistas.Usuario().buscarPorNombre(nombre_buscar_txt.getText(), datos_tb);
+    }//GEN-LAST:event_nombre_buscar_txtKeyReleased
 
     private void datos_tbKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_datos_tbKeyPressed
         // TODO add your handling code here:
@@ -293,36 +339,22 @@ public class Usuario extends java.awt.Dialog {
         }
     }//GEN-LAST:event_datos_tbKeyPressed
 
-    private void nombre_buscar_txtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre_buscar_txtKeyReleased
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        new vistas.Usuario().buscarPorNombre(nombre_buscar_txt.getText(), datos_tb);
-    }//GEN-LAST:event_nombre_buscar_txtKeyReleased
+        new vistas.Usuario().guardar(this);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void datos_suc_tbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_datos_suc_tbMouseClicked
         // TODO add your handling code here:
-        new vistas.Usuario().borrarFila(datos_tb);
-    }//GEN-LAST:event_jButton6ActionPerformed
+         int fila = datos_suc_tb.rowAtPoint(evt.getPoint());
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        new vistas.Usuario().editarUsuario(this);
-        new util.Tablas().limpiarTabla(datos_tb);
-    }//GEN-LAST:event_jButton7ActionPerformed
+        codigo_sucursal.setText(datos_suc_tb.getValueAt(fila, 0).toString());
+        sucursal_txt.setText(datos_suc_tb.getValueAt(fila, 1).toString());
+        
+    }//GEN-LAST:event_datos_suc_tbMouseClicked
 
-    private void sucursal_lstItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sucursal_lstItemStateChanged
-        if(sucursal_lst.getSelectedIndex() > 0){
-            int codigo_sucursal = new controlador.Sucursal().dameSucursalesPorNombre1(
-                    sucursal_lst.getSelectedItem().toString()).getId_sucursal();                    
-
-            codigo_sucursal_lbl.setText(String.valueOf(codigo_sucursal));
-        }else if(sucursal_lst.getSelectedIndex() == 0){
-            codigo_sucursal_lbl.setText("0");
-        }
-    }//GEN-LAST:event_sucursal_lstItemStateChanged
-
-    
-    public JLabel getCodigo_sucursal_lbl() {
-        return codigo_sucursal_lbl;
+    public JTable getDatos_suc_tb() {
+        return datos_suc_tb;
     }
 
     public JTable getDatos_tb() {
@@ -333,19 +365,27 @@ public class Usuario extends java.awt.Dialog {
         return nombre_txt;
     }
 
-    public JTextField getPass_txt() {
+    public JPasswordField getPass_txt() {
         return pass_txt;
     }
+
+    
 
     public JTextField getUsuario_txt() {
         return usuario_txt;
     }
 
+    public JTextField getSucursal_txt() {
+        return sucursal_txt;
+    }
+
+    public JTextField getCodigo_sucursal() {
+        return codigo_sucursal;
+    }
+
     
 
-    public JComboBox getSucursal_lst() {
-        return sucursal_lst;
-    }
+    
 
     
     /**
@@ -367,12 +407,14 @@ public class Usuario extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel codigo_sucursal_lbl;
+    private javax.swing.JTextField codigo_sucursal;
+    private javax.swing.JTable datos_suc_tb;
     private javax.swing.JTable datos_tb;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -381,11 +423,12 @@ public class Usuario extends java.awt.Dialog {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nombre_buscar_txt;
     private javax.swing.JTextField nombre_txt;
     private javax.swing.JTabbedPane panel4;
-    private javax.swing.JTextField pass_txt;
-    private javax.swing.JComboBox sucursal_lst;
+    private javax.swing.JPasswordField pass_txt;
+    private javax.swing.JTextField sucursal_txt;
     private javax.swing.JTextField usuario_txt;
     // End of variables declaration//GEN-END:variables
 }
