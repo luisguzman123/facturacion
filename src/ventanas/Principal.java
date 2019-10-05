@@ -31,6 +31,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        itemBanco = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +47,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem1);
+
+        itemBanco.setText("Banco");
+        itemBanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBancoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemBanco);
 
         jMenuBar1.add(jMenu2);
 
@@ -69,6 +78,11 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ventanas.Cliente(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void itemBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBancoActionPerformed
+        // TODO add your handling code here:
+        new ventanas.Banco(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_itemBancoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +120,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itemBanco;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
