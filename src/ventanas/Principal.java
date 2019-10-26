@@ -36,6 +36,9 @@ public class Principal extends javax.swing.JFrame {
         itemSucursal = new javax.swing.JMenuItem();
         itemTipoCliente = new javax.swing.JMenuItem();
         itemUsuario = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,7 +95,22 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(itemUsuario);
 
+        jMenu3.setText("Precio");
+        jMenu2.add(jMenu3);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu4.setText("Articulo");
+
+        jMenuItem2.setText("Buscar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -140,6 +158,11 @@ public class Principal extends javax.swing.JFrame {
         new ventanas.Usuario(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_itemUsuarioActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new ventanas.precioGuardar(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -183,7 +206,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemUsuario;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

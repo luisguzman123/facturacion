@@ -29,9 +29,9 @@ public class Postgre {
     
     
     public Connection conexion(){
-        String base_datos = "jdbc:postgresql://localhost:5433/sistema";
+        String base_datos = "jdbc:postgresql://localhost:5432/sistema";
         String usuario = "postgres";
-        String pass = "mica11";
+        String pass = "12345";
         Connection con =  null;
         try {
             
