@@ -6,6 +6,7 @@
 package vistas;
 
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -132,5 +133,21 @@ public class Categoria_Articulo {
         new ventanas.EditarCategoria_Articulo(null, true, categoria).setVisible(true);
     cargarTabla(ventana.getDatos_tb());
     }
+  public void cargarListaCategoria(JComboBox lista) {
+        lista.removeAllItems();
+        ArrayList<modelos.Categoria_Articulo> categorias = new controlador.Categoria_Articulo().dameCategorias();
+        lista.addItem("Selecciona una Categoria");
+        for (int i = 0; i < categorias.size(); i++) {
+
+            lista.addItem(categorias.get(i).getDescripcion());
+
+        }
+
+    }
+    
+    
+    
+    
+    
     
 }

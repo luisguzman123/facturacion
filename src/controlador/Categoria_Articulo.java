@@ -125,5 +125,24 @@ public class Categoria_Articulo {
 
        return datos;
     }
+   
 
+  public void guardarArticulo(modelos.Categoria_Articulo objeto) {
+
+        try {
+            PreparedStatement pst = con.prepareStatement("INSERT INTO public.articulos(\n" +
+"	nombre,stock_general, id_categoria, iva, activo)\n" +
+"	VALUES (?, ?, ?, ?, ?);");
+            pst.setString(1, objeto.getDescripcion());
+
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Error al guardar datos en la tabla Categorías: "
+                    + e.getMessage());
+        }
+
+    }
 }
